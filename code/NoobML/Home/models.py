@@ -53,18 +53,29 @@ class Project(models.Model):
     Test_csv = models.FileField(upload_to='Home/', validators=[FileExtensionValidator(allowed_extensions=['csv'])])
     Learning = models.BooleanField(choices=L_CHOICE,default=1, blank=False)
     Type = models.BooleanField(choices=T_CHOICE, default=0, blank=False)
-    Model_Name = models.CharField(max_length=250)
-    Score =  models.FloatField()
     Target = models.CharField(max_length=250)
-    x_values = ListField()
-    Features = ListField()
+    Input_Attributes = ListField()
 
     def __str__(self):
         return f'''
                  U_id: {self.U_id}
                  Name: {self.Name}
-                 Model_name: {self.Model_Name}
-                 Score: {self.Score}
+                 Learning: {self.Learning}
+                 Type: {self.Type}
+ 
 
           '''
 
+class Inference(models.Model):
+    P_id = models.ForeignKey(Project, on_delete=models.CASCADE, blank=False)
+    Model_Name = models.CharField(max_length=250)
+    Score = models.FloatField()
+    Features = ListField()
+
+    def __str__(self):
+        return f'''
+                 P_id: {self.P_id}
+                 Model_name: {self.Model_Name}
+                 Score: {self.Score}
+                 Features: {self.Features}
+          '''
