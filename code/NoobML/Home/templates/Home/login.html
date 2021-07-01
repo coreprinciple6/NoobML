@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Login</title>
+
+     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'Home/login.css' %}">
+
+</head>
+<body>
+
+    <div ><h1 style="color: #006666">NoobML</h1></div>
+
+    <div class="wrapper">
+        <div class="container">
+             <h1>Login page</h1>
+         {% if error_message %}
+                <span style="color:red"><p>{{ error_message }}</p></span>
+             {% endif %}
+
+
+             <form action="{% url 'login_view' %}" method="post" class="form">
+                        {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                        <span style="color:red">{{ field.errors }}</span>
+                            {{ field.label_tag }} {{ field }}
+                            <br><br>
+                        {% endfor %}
+                        <input type="submit" value="Submit" class="button">
+             </form>
+
+             <br>
+
+             <h4>Don't have an account?<a href="{% url 'register_view' %}">Register</a> here! </h4>
+
+          </div>
+    </div>
+
+
+
+</body>
+</html>

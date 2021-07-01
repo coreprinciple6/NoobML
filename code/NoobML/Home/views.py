@@ -46,8 +46,7 @@ def login_view(request):
         return HttpResponseRedirect(reverse('logged_in_view'))
     error_message = None
     if(request.method == 'POST'):
-        # post method indicates that user has submitted login data
-        # populate the form with data in the request dictionary
+
         form = LoginForm(request.POST)
         # form.is_valid() performs validation checks on the data entered by the user
         if(form.is_valid()):
@@ -63,7 +62,7 @@ def login_view(request):
     else:
         # get method indicates user needs to fill in data
         form = LoginForm()
-    return render(request, 'coupon/login.html', {'form': form, 'error_message': error_message})
+    return render(request, 'Home/login.html', {'form': form, 'error_message': error_message})
 
 
 def register_view(request):
@@ -73,30 +72,14 @@ def register_view(request):
         # fill up registration form with data from request dict
         form = RegistrationForm(request.POST)
         if(form.is_valid()):
-            type_of_user = form.cleaned_data['type_of_user']
             user = form.save(commit=False)
-            #  perform additional checks beyond those done in is_valid()
-            if(type_of_user == 'customer'):
-                user.is_customer = True # set the corresponding user boolean value
-                user.set_password(user.password)
-                customer = Customer(user=user)
-                # the order of saving the entries is critical here
-                # a student cannot be created without the corresponding user entry
-                # so create user first
-                user.save()
-                customer.save()
-            else:
-                assert type_of_user == 'partner'
-                user.is_partner = True
-                user.set_password(user.password)
-                partner = Partner(user=user)
-                user.save()
-                partner.save()
+            user.set_password(user.password)
+            user.save()
 
             return HttpResponseRedirect(reverse('login_view'))
     else:
         form = RegistrationForm()
-    return render(request, 'coupon/register.html', {'form': form})
+    return render(request, 'Home/register.html', {'form': form})
 
 #customer specific view functions
 
