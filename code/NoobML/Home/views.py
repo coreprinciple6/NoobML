@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse,  HttpResponseRedirect
 from .models import *
 from django.urls import reverse
-from .forms import  RegistrationForm, LoginForm
+from .forms import RegistrationForm, LoginForm, MLForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 
 
@@ -87,3 +87,29 @@ def dashboard_view(request):
     return render(request, 'Home/dashboard.html')
 
 
+@user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
+def project_view(request):
+ #   if(request.user.is_authenticated):
+      #  return HttpResponseRedirect(reverse('logged_in_view'))
+    error_message = None
+    if(request.method == 'POST'):
+
+        form = MLForm(request.POST)
+        if(form.is_valid()):
+            Project = form.save(commit=False)
+            Project.U_id = request.user
+            Project.save()
+
+            return HttpResponseRedirect(reverse('inference_view'))
+    else:
+        # get method indicates user needs to fill in data
+        form = MLForm()
+    return render(request, 'Home/project.html', {'form': form, 'error_message': error_message})
+
+
+@user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
+def inference_view(request):
+    if (request.user.is_authenticated):
+        return HttpResponseRedirect(reverse('logged_in_view'))
+    else:
+        return render(request, 'Home/inference.html')

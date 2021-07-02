@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Dashboard</title>
+  	<title>Project Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -96,10 +96,22 @@
           </div>
         </nav>
 
-        <h2 class="mb-4">Welcome Homer</h2>
-          <p>Lets get started with your Machine Learning Project </p>
+            <p>  Fill up the form below </p>
+                  {% if error_message %}
+                <span style="color:red"><p>{{ error_message }}</p></span>
+             {% endif %}
 
-          <a href="{% url 'project_view' %}">  <button class="button"> Start Project </button></a>
+
+             <form action="{% url 'project_view' %}" method="post" class="form">
+                        {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                        <span style="color:red">{{ field.errors }}</span>
+                            {{ field.label_tag }} {{ field }}
+                            <br><br>
+                        {% endfor %}
+                        <input type="submit" value="Submit" class="button">
+             </form>
+
 
 		</div>
         </div>

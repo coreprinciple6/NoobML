@@ -45,3 +45,21 @@ class RegistrationForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='username', max_length=150)
     password = forms.CharField(widget=forms.PasswordInput())
+
+
+class MLForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(MLForm, self).__init__(*args, **kwargs)
+        self.fields['Name'].required = True
+        self.fields['Train_csv'].required = True
+        self.fields['Test_csv'].required = True
+        self.fields['Learning'].required = True
+        self.fields['Type'].required = True
+        self.fields['Input_Attributes'].required = True
+        self.fields['Target'].required = True
+
+
+    class Meta:
+        model = Project
+        fields = [ 'Name', 'Train_csv', 'Test_csv', 'Learning', 'Type', 'Input_Attributes', 'Target']

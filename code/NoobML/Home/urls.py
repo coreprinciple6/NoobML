@@ -15,6 +15,9 @@ urlpatterns = [
     path('admin_redirected/', views.admin_redirected_view, name='admin_redirected_view'),
 
     path('dashboard', views.dashboard_view, name='dashboard_view'),
+    path('dashboard/project', views.project_view, name='project_view'),
+    path('dashboard/inference', views.inference_view, name='inference_view'),
+
 
 
 ]
