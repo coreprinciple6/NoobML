@@ -17,6 +17,7 @@ urlpatterns = [
     path('dashboard', views.dashboard_view, name='dashboard_view'),
     path('dashboard/project', views.project_view, name='project_view'),
     path('dashboard/inference', views.inference_view, name='inference_view'),
+    path('dashboard/inference/RunModel/<slug:projects_Name>/', views.RunModel_view, name='RunModel_view'),
 
 
 

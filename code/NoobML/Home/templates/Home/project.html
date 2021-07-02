@@ -102,7 +102,7 @@
              {% endif %}
 
 
-             <form action="{% url 'project_view' %}" method="post" class="form">
+             <form enctype="multipart/form-data"  action="{% url 'project_view'  %}" method="post" class="form">
                         {% csrf_token %}
                         {% for field in form.visible_fields %}
                         <span style="color:red">{{ field.errors }}</span>

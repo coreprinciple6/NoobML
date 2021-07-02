@@ -56,10 +56,11 @@ class MLForm(forms.ModelForm):
         self.fields['Test_csv'].required = True
         self.fields['Learning'].required = True
         self.fields['Type'].required = True
-        self.fields['Input_Attributes'].required = True
         self.fields['Target'].required = True
+        self.fields['Input_Attributes'].required = True
+
 
 
     class Meta:
         model = Project
-        fields = [ 'Name', 'Train_csv', 'Test_csv', 'Learning', 'Type', 'Input_Attributes', 'Target']
+        fields = [ 'Name', 'Train_csv', 'Test_csv', 'Learning', 'Type', 'Target', 'Input_Attributes']

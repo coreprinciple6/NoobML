@@ -89,18 +89,17 @@ def dashboard_view(request):
 
 @user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
 def project_view(request):
- #   if(request.user.is_authenticated):
-      #  return HttpResponseRedirect(reverse('logged_in_view'))
+    userid =  request.user
     error_message = None
     if(request.method == 'POST'):
-
-        form = MLForm(request.POST)
+        form = MLForm(request.POST, request.FILES)
         if(form.is_valid()):
             Project = form.save(commit=False)
-            Project.U_id = request.user
+            Project.U_id = userid
             Project.save()
-
             return HttpResponseRedirect(reverse('inference_view'))
+        else:
+            print(' tough luck my guy')
     else:
         # get method indicates user needs to fill in data
         form = MLForm()
@@ -110,6 +109,17 @@ def project_view(request):
 @user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
 def inference_view(request):
     if (request.user.is_authenticated):
-        return HttpResponseRedirect(reverse('logged_in_view'))
-    else:
-        return render(request, 'Home/inference.html')
+        try:
+            userid = request.user
+            project = Project.objects.filter(U_id=userid)
+
+        except(Project.DoesNotExist):
+            project = None
+
+        print(project)
+        return render(request, 'Home/inference.html', {'project' : project})
+
+def RunModel_view(request, projects_Name):
+    userid = request.user
+    project_deets = Project.objects.filter(U_id=userid, Name = projects_Name)
+    print(userid,project_deets )
