@@ -97,7 +97,20 @@
         </nav>
 
         <h2 class="mb-4">Welcome Homer</h2>
-          <p> INFERENCE</p>
+          <h2> Lets train your data and make predictions</h2>
+          {% if project %}
+            {% for projects in project %}
+                <h6>{{ projects.Name }}</h6>
+                <h6>{{ projects.Learning }}</h6>
+                <h6>{{ projects.Type }}</h6>
+                <a href="{% url 'RunModel_view' projects.Name %}"><button> Train!</button></a>
+
+                {% empty %}
+                <tr>
+                    <td>Nothing to show</td>
+                </tr>
+            {% endfor %}
+          {% endif %}
 
 
 		</div>
