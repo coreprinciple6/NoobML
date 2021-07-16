@@ -1,3 +1,6 @@
+import csv
+
+from django.conf import settings
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render
 from django.http import HttpResponse,  HttpResponseRedirect
@@ -5,6 +8,7 @@ from .models import *
 from django.urls import reverse
 from .forms import RegistrationForm, LoginForm, MLForm
 from django.contrib.auth.decorators import login_required, user_passes_test
+from .train import *
 
 
 #common view functions
@@ -115,11 +119,17 @@ def inference_view(request):
 
         except(Project.DoesNotExist):
             project = None
-
-        print(project)
         return render(request, 'Home/inference.html', {'project' : project})
 
 def RunModel_view(request, projects_Name):
     userid = request.user
-    project_deets = Project.objects.filter(U_id=userid, Name = projects_Name)
-    print(userid,project_deets )
+    project_deets = Project.objects.get(U_id=userid, Name = projects_Name)
+    Train_path = settings.MEDIA_ROOT + str(project_deets.Train_csv)
+    Train_data = pd.read_csv(Train_path)
+
+    Test_path = settings.MEDIA_ROOT + str(project_deets.Test_csv)
+    Test_data = pd.read_csv(Test_path)
+
+    target = project_deets.Target
+    result_dict = Feature_engineer(Train_data,Test_data, target)
+    print('checkpoint')

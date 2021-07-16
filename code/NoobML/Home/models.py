@@ -60,9 +60,12 @@ class Project(models.Model):
         return f'''
                  U_id: {self.U_id}
                  Name: {self.Name}
+                 Train_csv: {self.Train_csv}
+                 Test_csv: {self.Test_csv}
                  Learning: {self.Learning}
                  Type: {self.Type}
- 
+                 Target: {self.Target}
+                 Input_Attributes: {self.Input_Attributes}
 
           '''
 

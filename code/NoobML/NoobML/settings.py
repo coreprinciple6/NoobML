@@ -11,13 +11,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-z%b7b$=n7*ksi+t4jewopzoipe_w1httd7pr=^9n6991-f5c7u'
@@ -70,6 +72,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NoobML.wsgi.application'
 AUTH_USER_MODEL = 'Home.User'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
