@@ -1,29 +1,189 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-  	<title>Homepage</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        {% load static %}
-        <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{% static 'Home/index.css' %}">
+<head>
+  <title>NoobML</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-        <script  type="text/javascript" src="{% static 'Home/js/jquery.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'Home/js/popper.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'Home/js/bootstrap.min.js' %}"></script>
-        <script  type="text/javascript" src="{% static 'Home/js/main.js' %}"></script>
-  </head>
+  {% load static %}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+    <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static 'Home/style.css' %}" >
+  <!-- Vendor CSS Files -->
 
-  <body>
-      <h1 class="title"> Welcome to NoobML</h1>
+  <link rel="stylesheet"  href="{% static 'Home/vendor/bootstrap/css/bootstrap.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/bootstrap-icons/bootstrap-icons.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/boxicons/css/boxicons.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/glightbox/css/glightbox.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/swiper/swiper-bundle.min.cs' %}" >
 
-<div class="wrap">
-     <a href="{% url 'login_view' %}">  <button class="button"> Login </button></a>
-     <a  href="{% url 'register_view' %}">  <button class="button"> Sign Up </button></a>
-</div>
+  <!-- Template Main JS File -->
+  <script  type="text/javascript" src="{% static 'Home/main.js' %}"></script>
+  <!-- Vendor JS Files -->
 
-  </body>
+  <script  type="text/javascript" src="{% static 'Home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script  type="text/javascript" src="{% static 'Home/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script  type="text/javascript" src="{% static 'Home/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script  type="text/javascript" src="{% static 'Home/vendor/swiper/swiper-bundle.min.js' %}" ></script>
+
+
+
+
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div id="logo">
+        <h1><a>Noob<span>ML</span></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto" href="#call-to-action">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= hero Section ======= -->
+  <section id="hero">
+
+    <div class="hero-content" data-aos="fade-up">
+      <h2>Making <span>your ideas</span><br>happen!</h2>
+      <div>
+        <a href="{% url 'login_view' %}" class="btn-get-started scrollto">Login</a>
+        <a href="{% url 'register_view' %}" class="btn-projects scrollto">Sign Up</a>
+      </div>
+    </div>
+
+    <div class="hero-slider swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide firstdiv" > </div>
+        <div class="swiper-slide seconddiv" ></div>
+        <div class="swiper-slide thirddiv" ></div>
+        <div class="swiper-slide fourthdiv" ></div>
+      </div>
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-6 about-img">
+            <img src="{% static 'Home/img/about-img.jpg' %}" alt="">
+          </div>
+
+          <div class="col-lg-6 content">
+            <h2>What we do</h2>
+            <h3>We automate Machine Learning Pipelines to make business decisions easier and more convenient.</h3>
+            <h3> In today's world we are nothing without data and there is a ton of relevant questions that can be answered through AI to drive growth.</h3>
+
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Effortless</li>
+              <li><i class="bi bi-check-circle"></i> Efficient</li>
+              <li><i class="bi bi-check-circle"></i> Code Free</li>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>To get model predictions, add your data in csv format and let us do the magic.</p>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="box">
+              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <h4 class="title"><a href="">Supervised Learning</a></h4>
+              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident etiro rabeta lingo.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="box">
+              <div class="icon"><i class="bi bi-card-checklist"></i></div>
+              <h4 class="title"><a href="">Unsupervised Learning</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata nodera clas.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="box">
+              <div class="icon"><i class="bi bi-bar-chart"></i></div>
+              <h4 class="title"><a href="">Classification Problem</a></h4>
+              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trinige zareta lobur trade.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="box">
+              <div class="icon"><i class="bi bi-binoculars"></i></div>
+              <h4 class="title"><a href="">Regression Problem</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum rideta zanox satirente madera</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+
+
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action">
+      <div class="container" data-aos="zoom-out">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3 class="cta-title">Contact</h3>
+            <p class="cta-text"> The developing team works on maintaining and updating the webapp as necessary. For any queries or suggestions please mail the developer team at ajishrat97@gmail.com. </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{% url 'login_view' %}">Explore more</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </section><!-- End Call To Action Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+    </div>
+  </footer><!-- End Footer -->
+
+
+
+
+</body>
 
 </html>
