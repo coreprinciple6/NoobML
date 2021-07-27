@@ -1,36 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+   <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Register</title>
+  {% load static %}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+    <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="{% static 'Home/style.css' %}" >
 
-     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'Home/login.css' %}">
+  <!-- Vendor CSS Files -->
+
+  <link rel="stylesheet"  href="{% static 'Home/vendor/bootstrap/css/bootstrap.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/bootstrap-icons/bootstrap-icons.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/boxicons/css/boxicons.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/glightbox/css/glightbox.min.css' %}"  >
+  <link rel="stylesheet"  href="{% static 'Home/vendor/swiper/swiper-bundle.min.cs' %}" >
 
 </head>
 <body>
 
-    <div ><h1 style="color: #006666">NoobML</h1></div>
+ <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-between">
+
+      <div id="logo">
+        <h1><a>Noob<span>ML</span></a></h1>
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" >About</a></li>
+          <li><a class="nav-link scrollto" href="#call-to-action">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+<!------------------------main body--------------------------->
 
     <div class="wrapper">
-        <div class="container">
-             <h1>Registration page</h1>
+        <div class="container" style="text-align: center; padding: 0px 0px 30px 0px; width: 50%; background-color: rgba(80, 216, 175, 0.2);">
+            <h1 style="padding-top: 40px; color: #0c2e8a;"> <strong>Registration Page </strong></h1>
+            <br> <br>
+
         <form action="{% url 'register_view' %}" method="post">
-        {% csrf_token %}
-        {% for field in form.visible_fields %}
-        <span style="color:red">{{ field.errors }}</span>
-            {{ field.label_tag }} {{ field }}
-            <br><br>
-        {% endfor %}
-        <input type="submit" value="Submit">
-    </form>
+                    {% csrf_token %}
+                    {% for field in form.visible_fields %}
+                    <span style="color:red">{{ field.errors }}</span>
+                        {{ field.label_tag }} {{ field }}
+                        <br><br>
+                    {% endfor %}
+                    <input type="submit" value="Submit" style="background-color: #0c2e8a;color: white">
+        </form>
 
           </div>
-      <a href="{% url 'index' %}"><button> Back to Home</button></a>
     </div>
 
 
+
+     <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action">
+      <div class="container" data-aos="zoom-out">
+        <div class="row">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3 class="cta-title">Contact</h3>
+            <p class="cta-text"> The developing team works on maintaining and updating the webapp as necessary. For any queries or suggestions please mail the developer team at ajishrat97@gmail.com. </p>
+          </div>
+
+
+                    <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{% url 'index' %}" >Back To Home</a>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </section><!-- End Call To Action Section -->
+
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+
+    </div>
+  </footer><!-- End Footer -->
 
 </body>
 </html>
