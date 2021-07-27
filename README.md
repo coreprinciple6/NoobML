@@ -14,7 +14,7 @@ A digital Platform automating Machine Learning Pipeline.
 ![alt text](./Documentation/full.png)
 
 ## About The Project
-NoobML is a django web app that allows simple machine learning tasks to be carried out even for the most novice users. The highlight of the project is eliminating the use of code. User can just plug in their dataset and within minutes get predictions and answers to many business questions. We all know how powerful data can be and this is just a stepping stone to elevate business decision making process. 
+NoobML is a django web app that allows simple machine learning tasks to be carried out even for the most novice users. The highlight of the project is eliminating the use of code. User can just plug in their dataset and within minutes get predictions and answers to many business questions. We all know how powerful data can be and this is just a stepping stone to elevate business decision making process.  <br> 
 ![alt text](https://raw.githubusercontent.com/coreprinciple97/coreprinciple97/master/images/pytorch.svg)  &ensp;&ensp;&ensp;
 ![alt text](https://raw.githubusercontent.com/coreprinciple97/coreprinciple97/18ba183450b3559461d670950d4d127d3935653b/images/django.svg)  &ensp;&ensp;&ensp;
 <img title="Python" alt="Python" src="https://raw.githubusercontent.com/coreprinciple97/coreprinciple97/master/images/python.svg" width="50" height="50" />  &ensp;&ensp;&ensp;
