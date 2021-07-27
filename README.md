@@ -1,8 +1,7 @@
 # NoobML
-A digital Platform automating Machine Learning Pipeline.
+A digital Platform automating Machine Learning Pipeline.  
 ` Note: The project is still under developement and will be updated soon.`
-
-<img title="Python" alt="Tensorflow" src="./Documentation/full.png" width="360" height="200" />
+<br>
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -11,6 +10,8 @@ A digital Platform automating Machine Learning Pipeline.
 * [Architecture](#architecture)
 * [Installations](#installations)
 
+
+![alt text](./Documentation/full.png)
 
 ## About The Project
 NoobML is a django web app that allows simple machine learning tasks to be carried out even for the most novice users. The highlight of the project is eliminating the use of code. User can just plug in their dataset and within minutes get predictions and answers to many business questions. We all know how powerful data can be and this is just a stepping stone to elevate business decision making process. 
