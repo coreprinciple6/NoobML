@@ -1,4 +1,4 @@
-#!e:\repositories\noobml\venv\scripts\python.exe
+#!e:\repos\noobml\venv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

@@ -1,45 +1,46 @@
 import pandas as pd
 import numpy as np
 
-def Mapping(data):
-    for column in data:
-        print(column.dtype.name)
+class Feature_engineer:
+    def __init__(self):
+        pass
 
-    return 6666
+    def Mapping(data):
+        for column in data:
+            print(column.dtype.name)
 
-def Feature_engineer(train_data,test_data,target):
-    for column in train_data:
-        z = train_data[column].isnull().sum()
-        if (z>0):
-            train_data[column] = np.where(train_data[column].isna() == True, train_data[column].mean(), train_data[column])
+        return 6666
 
-    for column in test_data:
-        z = test_data[column].isnull().sum()
-        if (z>0):
-            test_data[column] = np.where(test_data[column].isna() == True, test_data[column].mean(), test_data[column])
-
-
-    for column in train_data:
-        df = column
-    print(df)
-   # if(train_data.dtypes is np.object):
-       # print(train_data)
-
-    return z
+    def clean(self,data):
+        ''' clean csv by filling all nulls with average and removing columns with majority null'''
+        for column in train_data:
+            z = train_data[column].isnull().sum()
+            if (z>0):
+                train_data[column] = np.where(train_data[column].isna() == True, train_data[column].mean(), train_data[column])
 
 
 
-# find correlation in train csv
+       #  for column in train_data:
+       #      df = column
+       #  print(df)
+       # # if(train_data.dtypes is np.object):
+       #     # print(train_data)
+       #
+       #  return z
 
 
-# create 2nd train and test dataframe holding features and target
+
+    # find correlation in train csv
 
 
-# call training script
+    # create 2nd train and test dataframe holding features and target
 
 
-# run test data and store result
+    # call training script
 
 
-#calculate accuracy and return statement
+    # run test data and store result
+
+
+    #calculate accuracy and return statement
 

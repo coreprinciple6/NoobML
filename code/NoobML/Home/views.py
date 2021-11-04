@@ -1,5 +1,5 @@
 import csv
-
+import pandas as pd
 from django.conf import settings
 from django.contrib.auth import logout, authenticate, login
 from django.shortcuts import render
@@ -8,7 +8,7 @@ from .models import *
 from django.urls import reverse
 from .forms import RegistrationForm, LoginForm, MLForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .train import *
+from .train import Feature_engineer
 
 
 #common view functions
@@ -93,6 +93,9 @@ def dashboard_view(request):
 
 @user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
 def project_view(request):
+    '''
+    view that opens ML form where u upload train and test files
+    '''
     userid =  request.user
     error_message = None
     if(request.method == 'POST'):
@@ -112,6 +115,9 @@ def project_view(request):
 
 @user_passes_test(user_not_admin, login_url='/Home/admin_redirected')
 def inference_view(request):
+    '''
+    directs to a page that shows current project with file names and input and target features. From here u can train!
+    '''
     if (request.user.is_authenticated):
         try:
             userid = request.user
@@ -122,6 +128,9 @@ def inference_view(request):
         return render(request, 'Home/inference.html', {'project' : project})
 
 def RunModel_view(request, projects_Name):
+    '''
+    collects current user's project details and sends csv file for feature engineering
+    '''
     userid = request.user
     project_deets = Project.objects.get(U_id=userid, Name = projects_Name)
     Train_path = settings.MEDIA_ROOT + str(project_deets.Train_csv)
@@ -129,7 +138,10 @@ def RunModel_view(request, projects_Name):
 
     Test_path = settings.MEDIA_ROOT + str(project_deets.Test_csv)
     Test_data = pd.read_csv(Test_path)
-
     target = project_deets.Target
-    result_dict = Feature_engineer(Train_data,Test_data, target)
+
+    #create instance of Feature_engineer class
+    feature_eng = Feature_engineer()
+    train_clean = feature_eng.clean(Train_data)
+    print(len(train_clean))
     print('checkpoint')
