@@ -143,5 +143,6 @@ def RunModel_view(request, projects_Name):
     #create instance of Feature_engineer class
     feature_eng = Feature_engineer()
     train_clean = feature_eng.clean(Train_data)
-    print(len(train_clean))
+    test_clean = feature_eng.clean(Test_data)
+    train_map = feature_eng.map(train_clean)
     print('checkpoint')

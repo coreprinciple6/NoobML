@@ -2,7 +2,7 @@ Name,sub1,sub2,sub3,verdict
 a,2,2,8,Pass
 b,3,3,1,Fail
 c,4,4,4,Pass
-d,5,4,4,Pass
+d,5,,4,Pass
 e,7,4,6,Pass
 f,1,1,1,Pass
 g,9,6,6,Fail
