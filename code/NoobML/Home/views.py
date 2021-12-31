@@ -8,7 +8,7 @@ from .models import *
 from django.urls import reverse
 from .forms import RegistrationForm, LoginForm, MLForm
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .train import Feature_engineer
+from .engineer import Feature_engineer
 
 
 #common view functions
@@ -145,4 +145,6 @@ def RunModel_view(request, projects_Name):
     train_clean = feature_eng.clean(Train_data)
     test_clean = feature_eng.clean(Test_data)
     train_map = feature_eng.map(train_clean)
-    print('checkpoint')
+    test_map = feature_eng.map(test_clean)
+    print(test_map)
+
