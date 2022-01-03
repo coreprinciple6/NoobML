@@ -46,21 +46,19 @@ class Feature_engineer:
             data = data.drop(data.columns[idx], axis=1)
         return data
 
-
-
-
-
     # find correlation in train csv
+    def correlation(self,data,target):
+        # for i,item in enumerate(data[target]):
+        #     data[target][i] = float(item)
 
-
-    # create 2nd train and test dataframe holding features and target
-
-
-    # call training script
-
-
-    # run test data and store result
-
-
-    #calculate accuracy and return statement
+        for column in data:
+            if column == target:
+                continue
+            else:
+                result = data[target].corr(data[column])
+            print(result)
+        #     # if result>0:
+            #     print('attention \n',result)
+            # else:
+            #     print('no')
 

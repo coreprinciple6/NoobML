@@ -9,6 +9,7 @@ from django.urls import reverse
 from .forms import RegistrationForm, LoginForm, MLForm
 from django.contrib.auth.decorators import login_required, user_passes_test
 from .engineer import Feature_engineer
+from .train import Train
 
 
 #common view functions
@@ -142,9 +143,15 @@ def RunModel_view(request, projects_Name):
 
     #create instance of Feature_engineer class
     feature_eng = Feature_engineer()
+    train_func = Train()
     train_clean = feature_eng.clean(Train_data)
     test_clean = feature_eng.clean(Test_data)
+
     train_map = feature_eng.map(train_clean)
     test_map = feature_eng.map(test_clean)
-    print(test_map)
+
+    #features = feature_eng.correlation(train_map,target)
+
+    #Train ----
+    beep = train_func.random_forest(train_map,test_map,target)
 
